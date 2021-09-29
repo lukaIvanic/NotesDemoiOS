@@ -14,7 +14,7 @@ class MainViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var dataManager: DataManager = DataManagerImpl()
-    var connectionField: ConnectionField?
+    var connectionManager: ConnectionManager?
     
     var elements: [Element] { dataManager.elements }
     var newElement: Element?
@@ -47,7 +47,7 @@ class MainViewController: UIViewController {
         setupUI()
         setupTableView()
         dataManager.fetchData()
-        connectionField = ConnectionField(elements)
+        connectionManager = ConnectionManager(elements)
         remakeConnections()
     }
     
@@ -185,7 +185,7 @@ extension MainViewController {
 
 
         removePreviousConnections()
-        guard let connections = connectionField?.findConnections(elements) else { return }
+        guard let connections = connectionManager?.findConnections(elements) else { return }
         
         for connection in connections {
             makeLine(connection)

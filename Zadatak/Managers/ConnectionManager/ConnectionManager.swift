@@ -1,5 +1,5 @@
 //
-//  ConnectionField.swift
+//  ConnectionManager.swift
 //  Zadatak
 //
 //  Created by Luka Ivanić on 29.09.2021..
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ConnectionField {
+struct ConnectionManager{
     
     
     private var activeConnectionField: [[Bool]]! // represents the active connections of the index cell
@@ -45,7 +45,7 @@ struct ConnectionField {
     
 }
 
-extension ConnectionField {
+extension ConnectionManager {
     
     private mutating func set(_ elements: [Element]){
         
