@@ -56,11 +56,12 @@ extension MainViewController {
     
     func setupUI(){
         addInsertButton()
-        tableView.heightAnchor.constraint(equalToConstant: 80 * 8).isActive = true
+        tableView.heightAnchor.constraint(equalToConstant: CGFloat(cellHeight * 8)).isActive = true
     }
     
     func setupTableView(){
-        tableView.autoresizesSubviews = false
+        tableView.estimatedRowHeight = 80
+        tableView.rowHeight = 80
         tableView.delegate = self
         tableView.dataSource = self
         
@@ -97,6 +98,8 @@ extension MainViewController {
 }
 
 extension MainViewController: UITableViewDelegate, UITableViewDataSource {
+    
+
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return elements.count
@@ -187,11 +190,13 @@ extension MainViewController {
     }
     
     func makeView(_ i1: Int, _ i2: Int){
+        
+        var hieghtOffset: CGFloat = CGFloat(abs((i2-i1-4))*cellHeight)
                             
-        let newPath = UIView(frame: CGRect(x: view.bounds.width - 40 + CGFloat(offset),
-                                           y: CGFloat(min(i1 * 80 + 40, i2 * 80 + 40)),
+        let newPath = UIView(frame: CGRect(x: view.bounds.width - CGFloat(halfCellHeight) + CGFloat(offset),
+                                           y: CGFloat(min(i1 * cellHeight + halfCellHeight, i2 * cellHeight + halfCellHeight)),
                                            width: 4,
-                                           height: abs(CGFloat(i1 - i2)) * CGFloat(80)))
+                                           height: abs(CGFloat(i1 - i2)) * CGFloat(cellHeight)))
 
         newPath.backgroundColor = .systemRed.withAlphaComponent(0)
         newPath.tag = 12
