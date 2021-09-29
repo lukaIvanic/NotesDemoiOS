@@ -61,8 +61,8 @@ extension MainViewController {
     }
     
     func setupTableView(){
-        tableView.estimatedRowHeight = 80
-        tableView.rowHeight = 80
+        tableView.estimatedRowHeight = CGFloat(cellHeight)
+        tableView.rowHeight = CGFloat(cellHeight)
         tableView.delegate = self
         tableView.dataSource = self
         
