@@ -80,7 +80,7 @@ extension DataManagerImpl {
             newElement.beginningDate = Date()
             newElement.endingDate = Date()
             newElement.id = UUID()
-            
+            newElement.index = Int32(i-1)
             
             elements.append(newElement)
         }
