@@ -14,12 +14,12 @@ class MainViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var dataManager: DataManager = DataManagerImpl()
+    var connectionField: ConnectionField?
     
     var elements: [Element] { dataManager.elements }
     var newElement: Element?
     var returnedElement: ReturnedElement?
     var clickedIndex: Int?
-    var offset = 0
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -47,6 +47,7 @@ class MainViewController: UIViewController {
         setupUI()
         setupTableView()
         dataManager.fetchData()
+        connectionField = ConnectionField(elements)
         remakeConnections()
     }
     
@@ -56,7 +57,7 @@ extension MainViewController {
     
     func setupUI(){
         addInsertButton()
-        tableView.heightAnchor.constraint(equalToConstant: CGFloat(cellHeight * 8)).isActive = true
+        tableView.heightAnchor.constraint(equalToConstant: CGFloat(cellHeight * visibleCellsCount)).isActive = true
     }
     
     func setupTableView(){
@@ -99,8 +100,6 @@ extension MainViewController {
 
 extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     
-
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return elements.count
     }
@@ -132,8 +131,20 @@ extension MainViewController: UITableViewDragDelegate, UITableViewDropDelegate {
             self.remakeConnections()
             
         }
-        
         return UISwipeActionsConfiguration(actions: [deleteAction])
+    }
+    
+    func tableView(_ tableView: UITableView, dragSessionDidEnd session: UIDragSession) {
+        
+        UIView.animate(withDuration: 0.5) {
+            for view in self.tableView.subviews {
+                if view.tag == lineTag {
+                    self.tableView.bringSubviewToFront(view)
+                    view.backgroundColor = .systemRed.withAlphaComponent(1)
+                }
+            }
+        }
+      
     }
     
     func tableView(_ tableView: UITableView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
@@ -142,7 +153,7 @@ extension MainViewController: UITableViewDragDelegate, UITableViewDropDelegate {
         
         UIView.animate(withDuration: 0.25) {
             for view in tableView.subviews {
-                if view.tag == 12 {
+                if view.tag == lineTag {
                     view.backgroundColor = .systemRed.withAlphaComponent(0)
                 }
             }
@@ -170,54 +181,64 @@ extension MainViewController {
     
     func remakeConnections(){
         
-        var count = 0
-                
-        removePreviousConnections()
-        for i1 in 0..<elements.count {
-            for i2 in i1+1..<elements.count {
-                
-                if count >= 4 { break }
+        print(tableView.frame.height)
 
-                if elements[i1].tag == elements[i2].tag,
-                   elements[i1].tag != nil,
-                   elements[i1].tag != "",
-                   i1 != i2 {
-                    makeView(i1, i2)
-                    count += 1
-                }
-            }
+
+        removePreviousConnections()
+        guard let connections = connectionField?.findConnections(elements) else { return }
+        
+        for connection in connections {
+            makeLine(connection)
         }
+        
     }
     
-    func makeView(_ i1: Int, _ i2: Int){
+    
+    func makeLine(_ connection: Connection){
         
-        var hieghtOffset: CGFloat = CGFloat(abs((i2-i1-4))*cellHeight)
-                            
-        let newPath = UIView(frame: CGRect(x: view.bounds.width - CGFloat(halfCellHeight) + CGFloat(offset),
+        let i1 = connection.firstIndex
+        let i2 = connection.secondIndex
+        let position = connection.position
+        
+        let x = view.bounds.width - CGFloat((tagPaddingRight-8)) + CGFloat(position*(lineSpacing + lineWidth))
+                                    
+        let newPath = UIView(frame: CGRect(x: x,
                                            y: CGFloat(min(i1 * cellHeight + halfCellHeight, i2 * cellHeight + halfCellHeight)),
                                            width: 4,
                                            height: abs(CGFloat(i1 - i2)) * CGFloat(cellHeight)))
-
-        newPath.backgroundColor = .systemRed.withAlphaComponent(0)
-        newPath.tag = 12
         
-        self.tableView.addSubview(newPath)
+        newPath.backgroundColor = .systemRed.withAlphaComponent(0)
+        newPath.tag = lineTag
+        
+        let topPoint = UIView()
+        topPoint.frame = CGRect(x: newPath.frame.minX - 2, y: newPath.frame.minY - 2, width: 6, height: 6)
+        topPoint.backgroundColor = newPath.backgroundColor
+        topPoint.tag = newPath.tag
+        
+        let bottomPoint = UIView()
+        bottomPoint.frame = CGRect(x: newPath.frame.minX - 2, y: newPath.frame.maxY - 2, width: 6, height: 6)
+        bottomPoint.backgroundColor = newPath.backgroundColor
+        bottomPoint.tag = newPath.tag
+        
+        tableView.addSubview(newPath)
+        tableView.addSubview(topPoint)
+        tableView.addSubview(bottomPoint)
         
         UIView.animate(withDuration: 1) {
             newPath.backgroundColor = .systemRed.withAlphaComponent(1)
+            topPoint.backgroundColor = newPath.backgroundColor
+            bottomPoint.backgroundColor = newPath.backgroundColor
         }
         
-        offset += 8
     }
         
     func removePreviousConnections(){
 
         for view in tableView.subviews {
-            if view.tag == 12 {
+            if view.tag == lineTag {
                 view.removeFromSuperview()
             }
         }
-        offset = 0
     }
     
 }

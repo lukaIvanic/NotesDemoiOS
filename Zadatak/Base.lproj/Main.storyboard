@@ -16,12 +16,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="iMu-Wg-ehj">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="iMu-Wg-ehj">
                                 <rect key="frame" x="0.0" y="88" width="414" height="640"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="640" id="gJK-Wd-2cb"/>
-                                </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="SZY-Qb-ZTv" customClass="ElementCell" customModule="Zadatak" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="24.5" width="414" height="80"/>
@@ -48,7 +45,7 @@
                                                     <color key="textColor" systemColor="systemGrayColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="tag 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yix-a4-rCI">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="tag 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yix-a4-rCI">
                                                     <rect key="frame" x="329" y="29.5" width="37" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -66,7 +63,6 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="WVa-2L-V9l" firstAttribute="leading" secondItem="4cL-E6-hXB" secondAttribute="leading" constant="16" id="9W8-VI-tOO"/>
-                                                <constraint firstAttribute="trailing" secondItem="Yix-a4-rCI" secondAttribute="trailing" constant="48" id="Dnx-M1-vqU"/>
                                                 <constraint firstItem="4pn-SG-ikp" firstAttribute="leading" secondItem="4cL-E6-hXB" secondAttribute="leading" constant="16" id="LmD-zX-OzN"/>
                                                 <constraint firstItem="yLB-Vq-h81" firstAttribute="leading" secondItem="4cL-E6-hXB" secondAttribute="leading" constant="16" id="QK4-X2-xm9"/>
                                                 <constraint firstItem="4pn-SG-ikp" firstAttribute="top" secondItem="WVa-2L-V9l" secondAttribute="bottom" id="VXA-1M-ZVU"/>
@@ -75,7 +71,6 @@
                                                 <constraint firstItem="WVa-2L-V9l" firstAttribute="top" secondItem="4cL-E6-hXB" secondAttribute="top" constant="5" id="yl3-5c-hIe"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="1" green="0.93426824760000005" blue="0.68872449719999995" alpha="0.4422221281" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <outlet property="beginningLabel" destination="4pn-SG-ikp" id="4Nk-rB-Tvi"/>
                                             <outlet property="endingLabel" destination="yLB-Vq-h81" id="0D7-yy-tqp"/>

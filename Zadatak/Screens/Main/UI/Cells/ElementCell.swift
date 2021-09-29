@@ -29,7 +29,7 @@ class ElementCell: UITableViewCell {
             endingLabel.text = formatter.string(from: endingDate)
         }
         
-        
+        tagLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -CGFloat(tagPaddingRight)).isActive = true
     }
     
 }

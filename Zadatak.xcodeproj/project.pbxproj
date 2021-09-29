@@ -12,6 +12,8 @@
 		9F3E0B54270468B500845291 /* ReturnedElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3E0B53270468B500845291 /* ReturnedElement.swift */; };
 		9F3E0B5627046ACB00845291 /* DataManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3E0B5527046ACB00845291 /* DataManagerImpl.swift */; };
 		9F3E0B5927047DB600845291 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3E0B5827047DB600845291 /* Constants.swift */; };
+		9F3E0B5D270483B700845291 /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3E0B5C270483B700845291 /* Connection.swift */; };
+		9F3E0B5F270483D900845291 /* ConnectionField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3E0B5E270483D900845291 /* ConnectionField.swift */; };
 		9F926C8126FE72EF005886B6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F926C8026FE72EF005886B6 /* AppDelegate.swift */; };
 		9F926C8326FE72EF005886B6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F926C8226FE72EF005886B6 /* SceneDelegate.swift */; };
 		9F926C8826FE72EF005886B6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F926C8626FE72EF005886B6 /* Main.storyboard */; };
@@ -33,6 +35,8 @@
 		9F3E0B53270468B500845291 /* ReturnedElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReturnedElement.swift; sourceTree = "<group>"; };
 		9F3E0B5527046ACB00845291 /* DataManagerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManagerImpl.swift; sourceTree = "<group>"; };
 		9F3E0B5827047DB600845291 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		9F3E0B5C270483B700845291 /* Connection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connection.swift; sourceTree = "<group>"; };
+		9F3E0B5E270483D900845291 /* ConnectionField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionField.swift; sourceTree = "<group>"; };
 		9F926C7D26FE72EF005886B6 /* Zadatak.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Zadatak.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F926C8026FE72EF005886B6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9F926C8226FE72EF005886B6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -83,6 +87,23 @@
 				9F3E0B5827047DB600845291 /* Constants.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		9F3E0B5A270483A500845291 /* ConnectionField */ = {
+			isa = PBXGroup;
+			children = (
+				9F3E0B5B270483AB00845291 /* Connection */,
+				9F3E0B5E270483D900845291 /* ConnectionField.swift */,
+			);
+			path = ConnectionField;
+			sourceTree = "<group>";
+		};
+		9F3E0B5B270483AB00845291 /* Connection */ = {
+			isa = PBXGroup;
+			children = (
+				9F3E0B5C270483B700845291 /* Connection.swift */,
+			);
+			path = Connection;
 			sourceTree = "<group>";
 		};
 		9F926C7426FE72EF005886B6 = {
@@ -158,6 +179,7 @@
 		9F926CC82700FBD8005886B6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				9F3E0B5A270483A500845291 /* ConnectionField */,
 				9FD62FCB27036A6900C8F05B /* Element */,
 			);
 			path = Model;
@@ -320,6 +342,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F3E0B5D270483B700845291 /* Connection.swift in Sources */,
 				9F926C9526FE759E005886B6 /* MainViewController.swift in Sources */,
 				9FD62FEA27039E7A00C8F05B /* DataManager.swift in Sources */,
 				9F926C8126FE72EF005886B6 /* AppDelegate.swift in Sources */,
@@ -329,6 +352,7 @@
 				9F1763A027015BEA00165302 /* Zadatak.xcdatamodeld in Sources */,
 				9FD62FD7270381DC00C8F05B /* Element+CoreDataClass.swift in Sources */,
 				9FD62FD6270381DC00C8F05B /* Element+CoreDataProperties.swift in Sources */,
+				9F3E0B5F270483D900845291 /* ConnectionField.swift in Sources */,
 				9F926C8326FE72EF005886B6 /* SceneDelegate.swift in Sources */,
 				9FD62FC62703513D00C8F05B /* InsertViewController.swift in Sources */,
 				9F3E0B5927047DB600845291 /* Constants.swift in Sources */,

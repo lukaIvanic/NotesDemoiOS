@@ -73,7 +73,7 @@ extension DataManagerImpl {
     
     func dummyData() {
         
-        for i in 1...50 {
+        for i in 1...24 {
             let newElement = Element(context: context)
             newElement.title = "ELEMENT \(i)"
             newElement.tag = ""
