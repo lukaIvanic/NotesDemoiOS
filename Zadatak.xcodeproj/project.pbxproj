@@ -92,7 +92,6 @@
 		9F3E0B5A270483A500845291 /* ConnectionField */ = {
 			isa = PBXGroup;
 			children = (
-				9F3E0B5B270483AB00845291 /* Connection */,
 				9F3E0B5E270483D900845291 /* ConnectionField.swift */,
 			);
 			path = ConnectionField;
@@ -129,6 +128,7 @@
 			children = (
 				9F3E0B5727047D9E00845291 /* Utils */,
 				9FD62FE827039E6D00C8F05B /* DataManager */,
+				9F3E0B5A270483A500845291 /* ConnectionField */,
 				9F926CC22700FAB3005886B6 /* Screens */,
 				9F926CC82700FBD8005886B6 /* Model */,
 				9F926C8026FE72EF005886B6 /* AppDelegate.swift */,
@@ -179,7 +179,7 @@
 		9F926CC82700FBD8005886B6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				9F3E0B5A270483A500845291 /* ConnectionField */,
+				9F3E0B5B270483AB00845291 /* Connection */,
 				9FD62FCB27036A6900C8F05B /* Element */,
 			);
 			path = Model;
